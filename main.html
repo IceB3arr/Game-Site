@@ -1,14 +1,96 @@
-<input type="text" id="zeitcode" placeholder="HH:MM">
-<button onclick="prüfen()">Prüfen</button>
-<p id="ausgabe"></p>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Die Schattenzeit</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 
-<script>
-function prüfen() {
-  const eingabe = document.getElementById("zeitcode").value;
-  if (eingabe === "13:37") {
-    document.getElementById("ausgabe").innerText = atob("R3V0IGdlbWFjaHQh");
-  } else {
-    document.getElementById("ausgabe").innerText = "Die Zeit ist noch nicht gekommen.";
-  }
-}
-</script>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, #0d0d0d 0%, #000000 100%);
+      color: #dddddd;
+      font-family: 'UnifrakturCook', serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+    }
+
+    h1 {
+      font-size: 3em;
+      letter-spacing: 2px;
+      color: #9b111e;
+      text-shadow: 0 0 10px #9b111e, 0 0 40px #111;
+    }
+
+    #container {
+      background-color: rgba(30, 30, 30, 0.8);
+      border: 1px solid #444;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #111;
+      text-align: center;
+    }
+
+    input {
+      background-color: #111;
+      color: #ddd;
+      border: 1px solid #555;
+      padding: 0.6em;
+      font-size: 1.2em;
+      margin-bottom: 1em;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #9b111e;
+      color: white;
+      border: none;
+      padding: 0.6em 1.2em;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 0 8px #9b111e;
+    }
+
+    #ausgabe {
+      margin-top: 1em;
+      font-style: italic;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Die Schattenzeit</h1>
+    <input type="text" id="zeitcode" placeholder="HH:MM z. B. 13:37">
+    <br>
+    <button onclick="prüfen()">Betreten</button>
+    <p id="ausgabe"></p>
+  </div>
+
+  <script>
+    function prüfen() {
+      const eingabe = document.getElementById("zeitcode").value;
+      if (eingabe === "13:37") {
+        const base64 = "U2ljaCBkZXIgT3J0IGhhdCBnZXJlZGV0Li4u"; // "Sich der Ort hat geredet..."
+        const decoded = atob(base64);
+        document.getElementById("ausgabe").innerText = decoded;
+      } else {
+        const fehlermeldung = [
+          "Die Schatten schweigen noch.",
+          "Zu früh. Oder zu spät.",
+          "Nur der Auserwählte kennt die Stunde.",
+          "Tick. Tock. Falsch."
+        ];
+        const zufall = fehlermeldung[Math.floor(Math.random() * fehlermeldung.length)];
+        document.getElementById("ausgabe").innerText = zufall;
+      }
+    }
+  </script>
+</body>
+</html>
