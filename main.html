@@ -1,0 +1,14 @@
+<input type="text" id="zeitcode" placeholder="HH:MM">
+<button onclick="prüfen()">Prüfen</button>
+<p id="ausgabe"></p>
+
+<script>
+function prüfen() {
+  const eingabe = document.getElementById("zeitcode").value;
+  if (eingabe === "13:37") {
+    document.getElementById("ausgabe").innerText = atob("R3V0IGdlbWFjaHQh");
+  } else {
+    document.getElementById("ausgabe").innerText = "Die Zeit ist noch nicht gekommen.";
+  }
+}
+</script>
